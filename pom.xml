@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>by.dulik.eureka</groupId>
-    <artifactId>ProjectEureka</artifactId>
+    <artifactId>project-eureka</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ProjectEureka</name>
     <description>Project Eureka</description>
@@ -19,7 +19,7 @@
     <modules>
         <module>discovery</module>
         <module>info</module>
-        <module>AccountManagement</module>
+        <module>account-management</module>
     </modules>
 
     <properties>

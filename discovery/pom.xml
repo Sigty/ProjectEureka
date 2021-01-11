@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>by.dulik.eureka</groupId>
-        <artifactId>ProjectEureka</artifactId>
+        <artifactId>project-eureka</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
