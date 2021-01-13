@@ -17,9 +17,10 @@
     </parent>
 
     <modules>
+        <module>account-management</module>
+        <module>api-gateway</module>
         <module>discovery</module>
         <module>info</module>
-        <module>account-management</module>
     </modules>
 
     <properties>
