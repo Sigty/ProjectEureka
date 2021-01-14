@@ -21,6 +21,7 @@
         <module>api-gateway</module>
         <module>discovery</module>
         <module>info</module>
+        <module>data</module>
     </modules>
 
     <properties>
