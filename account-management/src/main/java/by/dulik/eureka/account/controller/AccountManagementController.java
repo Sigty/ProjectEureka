@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collections;
 import java.util.Map;
 
-@RestController
 @RequestMapping("v1/account")
+@RestController
 public class AccountManagementController {
 
     @GetMapping("/echo")
