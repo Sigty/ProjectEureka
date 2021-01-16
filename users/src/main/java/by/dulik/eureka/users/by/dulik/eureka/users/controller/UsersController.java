@@ -1,6 +1,6 @@
 package by.dulik.eureka.users.by.dulik.eureka.users.controller;
 
-import by.dulik.eureka.users.by.dulik.eureka.users.model.CreateUserRequestModel;
+import by.dulik.eureka.users.by.dulik.eureka.users.model.CreateUserRequestDto;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +34,7 @@ public class UsersController {
     }
 
     @PostMapping
-    public String createUser(@Valid @RequestBody CreateUserRequestModel createUser) {
+    public String createUser(@Valid @RequestBody CreateUserRequestDto createUser) {
         return "Create user method is called";
     }
 

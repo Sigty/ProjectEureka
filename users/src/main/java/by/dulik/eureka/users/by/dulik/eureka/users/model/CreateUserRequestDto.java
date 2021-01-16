@@ -1,17 +1,19 @@
 package by.dulik.eureka.users.by.dulik.eureka.users.model;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-@Getter
-@ToString
-@EqualsAndHashCode
-public class CreateUserRequestModel {
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class CreateUserRequestDto {
 
     @NotNull(message = "First name cannot be null")
     @Size(min=2, message = "First name must not be less than two characters")

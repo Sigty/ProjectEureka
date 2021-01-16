@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @ToString(of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users", schema = "main")
+@Table(name = "users")
 @Entity
 public class User {
 
