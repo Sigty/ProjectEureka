@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class UserRequestMapperTest {
 
     @Autowired
-    private UserRequestMapperImpl userRequestMapper;
+    private UserRequestMapper userRequestMapper;
 
     @Test
     void userDtoToCreateUserDtoTest() {
@@ -31,7 +31,6 @@ class UserRequestMapperTest {
                 .encryptedPassword("passEnc")
                 .build();
         CreateUserRequestDto requestDto = userRequestMapper.userDtoToCreateUserDto(userDto);
-        System.out.println(requestDto);
         assertNotNull(requestDto);
         assertEquals(userDto.getFirstName(), requestDto.getFirstName());
     }
@@ -45,8 +44,8 @@ class UserRequestMapperTest {
                 .password("pass")
                 .build();
         UserDto userDto = userRequestMapper.createUserRequestDtoTOUserDto(createUserRequestDto);
-        System.out.println(userDto);
         assertNotNull(userDto);
+        assertNotNull(userDto.getUserId());
         assertEquals(userDto.getFirstName(), createUserRequestDto.getFirstName());
     }
 }

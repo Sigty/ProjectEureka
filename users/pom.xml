@@ -18,9 +18,8 @@
         <dependency>
             <groupId>by.dulik.eureka.data</groupId>
             <artifactId>data</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>${project.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>

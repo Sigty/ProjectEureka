@@ -8,27 +8,30 @@ import org.mapstruct.Mappings;
 import org.mapstruct.NullValueMappingStrategy;
 import org.mapstruct.ReportingPolicy;
 
+import java.util.UUID;
+
 @Mapper(
         componentModel = "spring",
         unmappedTargetPolicy = ReportingPolicy.IGNORE,
-        nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL
+        nullValueMappingStrategy = NullValueMappingStrategy.RETURN_NULL,
+        imports = UUID.class
 )
 public interface UserRequestMapper {
 
     @Mappings({
-            @Mapping(target="firstName", source="userDto.firstName"),
-            @Mapping(target="lastName", source="userDto.lastName"),
-            @Mapping(target="password", source="userDto.password"),
-            @Mapping(target="email", source="userDto.email")
+            @Mapping(target = "firstName", source = "userDto.firstName"),
+            @Mapping(target = "lastName", source = "userDto.lastName"),
+            @Mapping(target = "password", source = "userDto.password"),
+            @Mapping(target = "email", source = "userDto.email")
     })
     CreateUserRequestDto userDtoToCreateUserDto(UserDto userDto);
 
     @Mappings({
-            @Mapping(target="firstName", source="createUserRequestDto.firstName"),
-            @Mapping(target="lastName", source="createUserRequestDto.lastName"),
-            @Mapping(target="password", source="createUserRequestDto.password"),
-            @Mapping(target="email", source="createUserRequestDto.email"),
-            @Mapping(target = "userId", defaultExpression = "java(java.util.UUID.randomUUID().toString())")
+            @Mapping(target = "firstName", source = "createUserRequestDto.firstName"),
+            @Mapping(target = "lastName", source = "createUserRequestDto.lastName"),
+            @Mapping(target = "password", source = "createUserRequestDto.password"),
+            @Mapping(target = "email", source = "createUserRequestDto.email"),
+            @Mapping(target = "userId", expression = "java(UUID.randomUUID().toString())")
     })
     UserDto createUserRequestDtoTOUserDto(CreateUserRequestDto createUserRequestDto);
 }
