@@ -1,7 +1,7 @@
 package by.dulik.eureka.users.by.dulik.eureka.users.mapper;
 
+import by.dulik.eureka.data.entity.User;
 import by.dulik.eureka.users.by.dulik.eureka.users.dto.UserDto;
-import by.dulik.eureka.users.by.dulik.eureka.users.model.CreateUserRequestDto;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -14,39 +14,39 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @ExtendWith({SpringExtension.class, MockitoExtension.class})
-@SpringBootTest
 @ActiveProfiles("test")
-class UserRequestMapperTest {
+@SpringBootTest
+class UserMapperTest {
 
     @Autowired
-    private UserRequestMapper userRequestMapper;
+    private UserMapper userMapper;
 
     @Test
-    void userDtoToCreateUserDtoTest() {
-        UserDto userDto = UserDto.builder()
+    void userToUserDtoTest() {
+        User user = User.builder()
+                .userId("1")
                 .firstName("fn")
                 .lastName("ln")
                 .email("e")
-                .password("pass")
                 .encryptedPassword("passEnc")
                 .build();
-        CreateUserRequestDto requestDto = userRequestMapper.userDtoToCreateUserDto(userDto);
-        assertNotNull(requestDto);
-        assertEquals(userDto.getFirstName(), requestDto.getFirstName());
+        UserDto userDto = userMapper.userToUserDto(user);
+        assertNotNull(userDto);
+        assertEquals(user.getFirstName(), userDto.getFirstName());
     }
 
     @Test
-    void createUserRequestDtoTOUserDto(){
-        CreateUserRequestDto createUserRequestDto = CreateUserRequestDto.builder()
+    void userDtoToUserTest(){
+        UserDto userDto = UserDto.builder()
+                .userId("1")
                 .firstName("fn")
                 .lastName("ln")
                 .email("e")
-                .password("pass")
+                .encryptedPassword("passEnc")
                 .build();
-        UserDto userDto = userRequestMapper.createUserRequestDtoTOUserDto(createUserRequestDto);
-        assertNotNull(userDto);
-        assertNotNull(userDto.getUserId());
-        assertNotNull(userDto.getEncryptedPassword());
-        assertEquals(userDto.getFirstName(), createUserRequestDto.getFirstName());
+        User user = userMapper.userDtoToUser(userDto);
+        assertNotNull(user);
+        assertEquals(userDto.getFirstName(), user.getFirstName());
     }
+
 }

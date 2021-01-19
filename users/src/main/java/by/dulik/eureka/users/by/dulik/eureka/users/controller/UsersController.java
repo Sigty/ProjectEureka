@@ -1,7 +1,13 @@
 package by.dulik.eureka.users.by.dulik.eureka.users.controller;
 
+import by.dulik.eureka.users.by.dulik.eureka.users.dto.UserDto;
+import by.dulik.eureka.users.by.dulik.eureka.users.mapper.UserRequestMapper;
 import by.dulik.eureka.users.by.dulik.eureka.users.model.CreateUserRequestDto;
+import by.dulik.eureka.users.by.dulik.eureka.users.service.UsersService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,15 +19,14 @@ import javax.validation.Valid;
 import java.util.Collections;
 import java.util.Map;
 
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @RequestMapping("v1/users")
 @RestController
 public class UsersController {
 
+    private final UsersService usersService;
+    private final UserRequestMapper userRequestMapper;
     private final Environment environment;
-
-    public UsersController(Environment environment) {
-        this.environment = environment;
-    }
 
     @GetMapping("/echo")
     public ResponseEntity<Map<String, Object>> echo() {
@@ -34,8 +39,10 @@ public class UsersController {
     }
 
     @PostMapping
-    public String createUser(@Valid @RequestBody CreateUserRequestDto createUser) {
-        return "Create user method is called";
+    public ResponseEntity<Map<String, Object>> createUser(@Valid @RequestBody CreateUserRequestDto createUser) {
+        UserDto newUser = usersService.createUser(userRequestMapper.createUserRequestDtoTOUserDto(createUser));
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(Collections.singletonMap("idUser", newUser.getUserId()));
     }
 
 
