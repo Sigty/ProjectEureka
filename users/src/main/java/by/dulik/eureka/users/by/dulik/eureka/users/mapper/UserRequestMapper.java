@@ -27,7 +27,7 @@ public interface UserRequestMapper {
             @Mapping(target = "password", source = "userDto.password"),
             @Mapping(target = "email", source = "userDto.email")
     })
-    CreateUserRequestDto userDtoToCreateUserDto(UserDto userDto);
+    CreateUserRequestDto userDtoToCreateUserRequestDto(UserDto userDto);
 
     @Mappings({
 

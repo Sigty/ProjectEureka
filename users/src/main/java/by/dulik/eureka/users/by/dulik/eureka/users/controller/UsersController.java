@@ -2,7 +2,9 @@ package by.dulik.eureka.users.by.dulik.eureka.users.controller;
 
 import by.dulik.eureka.users.by.dulik.eureka.users.dto.UserDto;
 import by.dulik.eureka.users.by.dulik.eureka.users.mapper.UserRequestMapper;
+import by.dulik.eureka.users.by.dulik.eureka.users.mapper.UserResponseMapper;
 import by.dulik.eureka.users.by.dulik.eureka.users.model.CreateUserRequestDto;
+import by.dulik.eureka.users.by.dulik.eureka.users.model.response.CreateUserResponseDto;
 import by.dulik.eureka.users.by.dulik.eureka.users.service.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +28,7 @@ public class UsersController {
 
     private final UsersService usersService;
     private final UserRequestMapper userRequestMapper;
+    private final UserResponseMapper userResponseMapper;
     private final Environment environment;
 
     @GetMapping("/echo")
@@ -39,10 +42,10 @@ public class UsersController {
     }
 
     @PostMapping
-    public ResponseEntity<Map<String, Object>> createUser(@Valid @RequestBody CreateUserRequestDto createUser) {
+    public ResponseEntity<CreateUserResponseDto> createUser(@Valid @RequestBody CreateUserRequestDto createUser) {
         UserDto newUser = usersService.createUser(userRequestMapper.createUserRequestDtoTOUserDto(createUser));
         return ResponseEntity.status(HttpStatus.CREATED)
-                .body(Collections.singletonMap("idUser", newUser.getUserId()));
+                .body(userResponseMapper.userDtoToCreateResponseUserDto(newUser));
     }
 
 
