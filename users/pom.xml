@@ -9,14 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>by.dulik.eureka.users</groupId>
     <artifactId>users</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
-            <groupId>by.dulik.eureka.data</groupId>
+            <groupId>by.dulik.eureka</groupId>
             <artifactId>data</artifactId>
             <version>${project.version}</version>
         </dependency>
