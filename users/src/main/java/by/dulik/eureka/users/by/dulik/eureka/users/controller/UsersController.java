@@ -38,7 +38,9 @@ public class UsersController {
 
     @GetMapping("/status")
     public ResponseEntity<Map<String, Object>> status() {
-        return ResponseEntity.ok(Collections.singletonMap("port", environment.getProperty("local.server.port")));
+        return ResponseEntity.ok(Map.of("port", environment.getProperty("local.server.port"),
+                "testField", environment.getProperty("test.api.props"),
+                "token-expiration-time", environment.getProperty("token.expiration.time")));
     }
 
     @PostMapping
