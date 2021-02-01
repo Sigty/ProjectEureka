@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @ToString(of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "users")
+@Table(name = "users", schema = "main")
 @Entity
 public class User {
 
@@ -26,18 +26,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "userId", nullable = false, unique = true)
+    @Column(name = "user_id", nullable = false, unique = true)
     private String userId;
 
-    @Column(name = "firstName", nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "encryptedPassword", nullable = false, unique = true)
+    @Column(name = "encrypted_password", nullable = false, unique = true)
     private String encryptedPassword;
 }
