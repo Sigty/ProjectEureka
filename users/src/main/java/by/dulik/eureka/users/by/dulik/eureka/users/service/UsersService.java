@@ -42,7 +42,7 @@ public class UsersService implements UserDetailsService {
                         .authorities(new ArrayList<>())
                         .build()
                 )
-                .orElseThrow(() -> new UsernameNotFoundException("Not found user with e-mail : " + username));
+                .orElseThrow(() -> new UsernameNotFoundException(String.format("Not found user with e-mail : %s", username)));
     }
 
     public UserDto getUserDetailsByEmail(String email) {
@@ -52,6 +52,12 @@ public class UsersService implements UserDetailsService {
     private UserDto getUserDtoByEmail(String email) {
         return userMapper
                 .userToUserDto(userRepository.findByEmail(email)
-                        .orElseThrow(() -> new EntityNotFoundException("Not found user with e-mail : " + email)));
+                        .orElseThrow(() -> new EntityNotFoundException(String.format("Not found user with e-mail : %s", email))));
+    }
+
+    public UserDto getUserDtoByUserId(String userId) {
+        return userMapper
+                .userToUserDto(userRepository.findByUserId(userId)
+                        .orElseThrow(() -> new EntityNotFoundException(String.format("Not found user with userId : %s", userId))));
     }
 }

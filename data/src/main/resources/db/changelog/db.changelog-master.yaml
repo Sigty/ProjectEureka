@@ -2,3 +2,5 @@ databaseChangeLog:
   - logicalFilePath: db/changelog/db.changelog-master.yaml
   - include:
       file: db/changelog/db.changelog-create.yaml
+  - include:
+      file: db/changelog/db.changelog-insert-users.yaml
