@@ -1,5 +1,5 @@
 databaseChangeLog:
-  - logicalFilePath: db/changelog/db.changelog-lesson1.yaml
+  - logicalFilePath: db/changelog/db.changelog-create.yaml
   - changeSet:
       id: 1
       author: Dulik
@@ -40,5 +40,38 @@ databaseChangeLog:
                   name: encrypted_password
                   type: TEXT
                   constraints:
-                    unique: true
+                    unique: false
                     nullable: false
+  - changeSet:
+      id: 2
+      author: Dulik
+      changes:
+        - createTable:
+            tableName: messages
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: varchar(256)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: text
+                  type: TEXT
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: BIGINT
+                  constraints:
+                    nullable: false
+                    foreignKeyName: user_id
+                    referencedColumnNames: id
+                    referencedTableName: users
+                    onDelete: CASCADE

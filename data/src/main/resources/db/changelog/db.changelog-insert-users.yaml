@@ -1,0 +1,116 @@
+databaseChangeLog:
+  - logicalFilePath: db/changelog/db.changelog-insert-users.yaml
+  - changeSet:
+      id: 3
+      author: Dulik
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  value: "111"
+              - column:
+                  name: first_name
+                  value: "test_first_name_first"
+              - column:
+                  name: last_name
+                  value: "test_second_name_first"
+              - column:
+                  name: email
+                  value: "testfirsttest@testtest.com"
+              - column:
+                  name: encrypted_password
+                  value: "$2y$12$rxSIuMhrQN2nv9DrZebRg.B2nbqN.8MfhZD6icN/bZTMmsTdDcmM6"
+
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  value: "222"
+              - column:
+                  name: first_name
+                  value: "test_first_name_second"
+              - column:
+                  name: last_name
+                  value: "test_first_name_second"
+              - column:
+                  name: email
+                  value: "testsecondtest@testtest.com"
+              - column:
+                  name: encrypted_password
+                  value: "$2y$12$rxSIuMhrQN2nv9DrZebRg.B2nbqN.8MfhZD6icN/bZTMmsTdDcmM6"
+
+        - insert:
+            tableName: messages
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: title
+                  value: "1_title"
+              - column:
+                  name: text
+                  value: "1_test_text"
+        - insert:
+            tableName: messages
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: title
+                  value: "2_title"
+              - column:
+                  name: text
+                  value: "2_test_text"
+        - insert:
+            tableName: messages
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: title
+                  value: "3_title"
+              - column:
+                  name: text
+                  value: "3_test_text"
+        - insert:
+            tableName: messages
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: title
+                  value: "4_title"
+              - column:
+                  name: text
+                  value: "4_test_text"
+        - insert:
+            tableName: messages
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: title
+                  value: "5_title"
+              - column:
+                  name: text
+                  value: "5_test_text"
+        - insert:
+            tableName: messages
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: title
+                  value: "6_title"
+              - column:
+                  name: text
+                  value: "6_test_text"
