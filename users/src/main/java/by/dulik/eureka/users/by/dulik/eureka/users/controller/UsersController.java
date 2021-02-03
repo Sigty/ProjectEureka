@@ -5,7 +5,7 @@ import by.dulik.eureka.users.by.dulik.eureka.users.mapper.UserRequestMapper;
 import by.dulik.eureka.users.by.dulik.eureka.users.mapper.UserResponseMapper;
 import by.dulik.eureka.users.by.dulik.eureka.users.model.CreateUserRequestDto;
 import by.dulik.eureka.users.by.dulik.eureka.users.model.response.CreateUserResponseDto;
-import by.dulik.eureka.users.by.dulik.eureka.users.model.response.UserResponseDto;
+import by.dulik.eureka.users.by.dulik.eureka.users.model.response.UserWithMessageResponseDto;
 import by.dulik.eureka.users.by.dulik.eureka.users.service.UsersService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,12 +53,9 @@ public class UsersController {
     }
 
     @GetMapping("/{userId}")
-    public ResponseEntity<UserResponseDto> getUser(@PathVariable String userId) {
-        UserDto userDto = usersService.getUserDtoByUserId(userId);
-        CreateUserResponseDto responseDto = userResponseMapper.userDtoToCreateResponseUserDto(userDto);
-
+    public ResponseEntity<UserWithMessageResponseDto> getUser(@PathVariable String userId) {
         return ResponseEntity.status(HttpStatus.OK)
-                .body(null);
+                .body(usersService.getUserDtoByUserId(userId));
     }
 
 }

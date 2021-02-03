@@ -10,4 +10,5 @@ import java.util.List;
 public interface MessageRepository extends PagingAndSortingRepository<Message, Long> {
 
     List<Message> findAllByUserId(String id);
+    List<Message> findAllByUserUserId(String userId);
 }

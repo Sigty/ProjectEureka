@@ -20,11 +20,7 @@ public class MessageService {
     private final MessageMapper messageMapper;
 
     public List<MessageResponseDto> getMessageByUserId(String userId){
-//        return messageRepository.findById(Long.valueOf(userId))
-//                .stream()
-//                .map(messageMapper::messageToMessageResponseDto)
-//                .collect(Collectors.toList());
-        return messageRepository.findAllByUserId(userId)
+        return messageRepository.findAllByUserUserId(userId)
                 .stream()
                 .map(messageMapper::messageToMessageResponseDto)
                 .collect(Collectors.toList());
