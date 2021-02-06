@@ -13,7 +13,7 @@ import java.util.List;
 public interface MessageServiceClient {
 
     @CircuitBreaker(name = "messagesFallback", fallbackMethod = "getMessagesFullback")
-    @GetMapping("/v1/users/{userId}/messages!")
+    @GetMapping("/v1/users/{userId}/messages")
     List<MessageResponseDto> getMessages(@PathVariable String userId);
 
     default List<MessageResponseDto> getMessagesFullback(String userId, RuntimeException ex) {
