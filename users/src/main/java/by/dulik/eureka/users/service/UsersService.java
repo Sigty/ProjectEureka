@@ -6,6 +6,7 @@ import by.dulik.eureka.users.mapper.UserMapper;
 import by.dulik.eureka.users.mapper.UserResponseMapper;
 import by.dulik.eureka.users.model.response.UserWithMessageResponseDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 
+@Slf4j
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @Transactional(readOnly = true)
 @Service
@@ -65,7 +67,9 @@ public class UsersService implements UserDetailsService {
                 .userToUserDto(userRepository.findByUserId(userId)
                         .orElseThrow(() -> new EntityNotFoundException(String.format("Not found user with userId : %s", userId))));
 
+        log.info("Before calling info microservice");
         UserWithMessageResponseDto responseDto = userResponseMapper.userDtoToUserWithMessageResponseDto(userDto);
+        log.info("After calling info microservice");
         responseDto.setMessages(messageServiceClient.getMessages(userId));
 
         return responseDto;
