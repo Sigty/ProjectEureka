@@ -22,7 +22,6 @@ public class MessageService {
     private final MessageMapper messageMapper;
 
     public List<MessageResponseDto> getMessageByUserId(String userId) {
-        log.info("Before: getMessageByUserId(String userId)");
         return messageRepository.findAllByUserUserId(userId)
                 .stream()
                 .map(messageMapper::messageToMessageResponseDto)
