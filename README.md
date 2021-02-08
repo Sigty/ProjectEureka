@@ -6,3 +6,4 @@ SpringCloud with Spring Boot, Maven, Eureka.
 - PostgreSQL
 - Spring Config Service
 - Resilience4j(CircuitBreaker)
+- ELK for logging(ElasticSearch, LogStash, Kibana)
